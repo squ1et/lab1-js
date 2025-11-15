@@ -1,0 +1,29 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: linear-gradient(to bottom, lightblue, lightpink);
+    background-repeat: no-repeat;
+    background-color: lightpink;
+}
+
+header {
+    text-align: center;
+    margin: auto;
+    position: relative;
+}
+
+.check-date {
+    position: absolute;
+    background-image: linear-gradient(to bottom right, lightpink, lightblue);
+    font-size: 18px;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.check-date:hover {
+    background-image: none;
+    background-color: lightblue;
+    transform: scale(1.1);
+}

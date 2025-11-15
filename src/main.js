@@ -1,32 +1,71 @@
-//TIP With Search Everywhere, you can find any action, file, or symbol in your project. Press <shortcut actionId="Shift"/> <shortcut actionId="Shift"/>, type in <b>terminal</b>, and press <shortcut actionId="EditorEnter"/>. Then run <shortcut raw="npm run dev"/> in the terminal and click the link in its output to open the app in the browser.
-export function setupCounter(element) {
-  //TIP Try <shortcut actionId="GotoDeclaration"/> on <shortcut raw="counter"/> to see its usages. You can also use this shortcut to jump to a declaration – try it on <shortcut raw="counter"/> on line 13.
-  let counter = 0;
+let arr = [];
+let html = "";
 
-  const adjustCounterValue = value => {
-    if (value >= 100) return value - 100;
-    if (value <= -100) return value + 100;
-    return value;
-  };
+arr[0] = {
+  Name: 'Math',
+  Data: '15.11.2025',
+  Aud: 213
+};
 
-  const setCounter = value => {
-    counter = adjustCounterValue(value);
-    //TIP WebStorm has lots of inspections to help you catch issues in your project. It also has quick fixes to help you resolve them. Press <shortcut actionId="ShowIntentionActions"/> on <shortcut raw="text"/> and choose <b>Inline variable</b> to clean up the redundant code.
-    const text = `${counter}`;
-    element.innerHTML = text;
-  };
+arr[1] = {
+  Name: 'CS',
+  Data: '14.11.2025',
+  Aud: 301
+};
 
-  document.getElementById('increaseByOne').addEventListener('click', () => setCounter(counter + 1));
-  document.getElementById('decreaseByOne').addEventListener('click', () => setCounter(counter - 1));
-  document.getElementById('increaseByTwo').addEventListener('click', () => setCounter(counter + 2));
-  //TIP In the app running in the browser, you’ll find that clicking <b>-2</b> doesn't work. To fix that, rewrite it using the code from lines 19 - 21 as examples of the logic.
-  document.getElementById('decreaseByTwo')
+arr[2] = {
+  Name: 'JavaScript',
+  Data: '11.11.2025',
+};
 
-  //TIP Let’s see how to review and commit your changes. Press <shortcut actionId="GotoAction"/> and look for <b>commit</b>. Try checking the diff for a file – double-click main.js to do that.
-  setCounter(0);
+function res_diff_Days (text) {
+  let currDate = new Date();
+  let date = new Date(text.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
+
+  let timeDiff = Math.abs(currDate.getTime() - date.getTime());
+
+  return Math.ceil(timeDiff / (1000 * 3600 * 24)) - 1;
 }
 
-//TIP To find text strings in your project, you can use the <shortcut actionId="FindInPath"/> shortcut. Press it and type in <b>counter</b> – you’ll get all matches in one place.
-setupCounter(document.getElementById('counter-value'));
+function output (item, i, array) {
+  let text = item['Data']
+  let diffDays = res_diff_Days(text)
+  let res;
+  item['Aud'] = !item['Aud'] ? 'Не вказано' : item['Aud'];
 
-//TIP There's much more in WebStorm to help you be more productive. Press <shortcut actionId="Shift"/> <shortcut actionId="Shift"/> and search for <b>Learn WebStorm</b> to open our learning hub with more things for you to try.
+  if (diffDays === 1) {
+    html += `<tr style="background:mediumpurple;">`;
+    res = 'Консультація';
+  }
+  else if (diffDays === 0) {
+    html += `<tr style="background:darkcyan">`;
+    res = 'Іспит';
+  }
+  else {
+    html += `<tr>`;
+    res = 'Нема поточних подій';
+  }
+
+  for (let key in item) {
+    html += `<td>${item[key]}</td>`;
+  }
+
+  html += `<td>${res}</td>`;
+  html += `</tr>`;
+}
+
+function ras () {
+  html = '<table style="b-table">';
+  html += '<tr><td><b>Предмет</b></td>'+
+    '<td><b>Дата</b></td><td><b>Аудиторія</b></td><td><b>Поточна подія</b></td></tr>';
+  arr.forEach(output)
+  html += '</table>';
+  document.getElementById('result').innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const checkDateButton = document.querySelector('.check-date');
+  if (checkDateButton) {
+    checkDateButton.addEventListener('click', ras);
+  }
+});
