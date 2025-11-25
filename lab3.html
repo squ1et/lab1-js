@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="public/styles/style.css">
+    <link rel="stylesheet" href="public/styles/menu_style.css">
+    <script src="src/lab3_script.js"></script>
+    <title>Лабораторна робота №3 (JS)</title>
+</head>
+<body>
+<main>
+    <header>
+        <h1>Лабораторна робота №1 (JS)</h1>
+        <h2>Роботу виконав студент групи АнД-32</h2>
+        <h2>Гринчук Олександр</h2>
+    </header>
+    <ul class="menu-main">
+        <li><a href="index.html">Лабораторна робота №1</a></li>
+        <li><a href="lab2.html">Лабораторна робота №2</a></li>
+        <li><a href="lab3.html">Лабораторна робота №3</a></li>
+    </ul>
+    <h2><b>Завдання:</b></h2>
+    <div class="task">
+        <h3>Розробити дизайн веб сторінки для лабораторної роботи № 3 та написати
+            JavaScript для вирішення наступного завдання. Реалізувати ієрархію класів
+            відповідно до варіанту. Клас нащадок повинен перевизначити конструктор та
+            деякі з методів батьківського класу.</h3>
+        <ul>
+            <li>Базовий клас: Зошит (поле: назва, кількість аркушів -k)</li>
+            <li>Метод: Вартість: 15 k</li>
+            <li>Нащадок: Загальна (поле - матеріал обкладинки)</li>
+        </ul>
+        <h3>
+            Змінити вартість з урахуванням надбавки за обкладинку на 50грн.
+        </h3>
+    </div>
+
+    <label for="name1">Назва (Notebook):</label>
+    <input type="text" id="name1" value="Зошит 1" required><br><br>
+
+    <label for="num_of_papers1">Кількість аркушів (Notebook):</label>
+    <input type="number" id="num_of_papers1" value="48" required><br><br>
+
+    <label for="name2">Назва (General):</label>
+    <input type="text" id="name2" value="Зошит 2" required><br><br>
+
+    <label for="num_of_papers2">Кількість аркушів (General):</label>
+    <input type="number" id="num_of_papers2" value="96" required><br><br>
+
+    <label for="material">Матеріал обкладинки (General):</label>
+    <input type="text" id="material" value="Шкіра" required><br><br>
+
+    <button onclick="notebook_ras()">Обчислити Вартість</button>
+    <hr>
+
+    <h3>Результати для Notebook:</h3>
+    <ul>
+        <li><span id="Name1"></span></li>
+        <li><span id="Cost1"></span></li>
+    </ul>
+
+    <h3>Результати для General:</h3>
+    <ul>
+        <li><span id="Material2"></span></li>
+        <li><span id="Cost2"></span></li>
+    </ul>
+</main>
+</body>
+</html>
