@@ -14,16 +14,20 @@ header {
     position: relative;
 }
 
-.check-date {
-    position: absolute;
+.btn-style {
+    position: relative;
     background-image: linear-gradient(to bottom right, lightpink, lightblue);
     font-size: 18px;
     border: none;
     transition: transform 0.3s ease-in-out;
 }
 
-.check-date:hover {
+.btn-style:hover {
     background-image: none;
     background-color: lightblue;
     transform: scale(1.1);
+}
+
+.table-t2 tr {
+    background:mediumpurple;
 }
